@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generator Prompt VEO 3</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 20px;
+      background: url('https://files.catbox.moe/ut5gck.jpg') no-repeat center center fixed;
+      background-size: cover;
+      background-attachment: fixed;
+      color: #fff;
+      text-shadow: 0 0 4px #000;
+    }
+    h1 {
+      font-size: 30px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    h2 {
+      text-align: center;
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 15px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    button {
+      margin-top: 20px;
+      background-color: #ec4899;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #be185d;
+    }
+    .output {
+      margin-top: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 15px;
+      border-radius: 6px;
+      white-space: pre-wrap;
+      color: #fff;
+    }
+    footer {
+      margin-top: 40px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      text-align: center;
+      font-size: 14px;
+      color: #eee;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>alpindeveloper</h1>
+  <h2>🎬 Generator Prompt - Google Gemini VEO 3</h2>
+
+  <label>Nama / Tipe Karakter:</label>
+  <input id="karakter" placeholder="Contoh: nenek, bapak, cewek muda" />
+
+  <label>Umur:</label>
+  <input id="umur" placeholder="Contoh: 60 tahun" />
+
+  <label>Pakaian:</label>
+  <input id="pakaian" placeholder="Contoh: daster, baju putih, dll" />
+
+  <label>Lokasi / Tempat:</label>
+  <input id="lokasi" placeholder="Contoh: pasar, jalan raya, dsb" />
+
+  <label>Suasana:</label>
+  <input id="suasana" placeholder="Contoh: hujan, mendung, ramai" />
+
+  <label>Suara Sekitar:</label>
+  <input id="suara" placeholder="Contoh: angin, petir, suara motor" />
+
+  <label>Bahasa:</label>
+  <input id="bahasa" placeholder="Contoh: Bahasa Indonesia, logat Jawa" />
+
+  <label>Dialog Karakter:</label>
+  <textarea id="dialog" rows="3" placeholder='Contoh: "woi Alpin mikir lah..."'></textarea>
+
+  <button onclick="generatePrompt()">🎥 Buat Prompt</button>
+
+  <div class="output" id="outputPrompt">Prompt akan muncul di sini...</div>
+
+  <button onclick="copyPrompt()">📋 Salin Prompt</button>
+
+  <footer>
+    Dibuat dengan ❤️ oleh alpindeveloper — Tingkatkan ceritamu dengan prompt AI.<br>📷 Instagram: <a href='https://instagram.com/_alvincandra' target='_blank' style='color:#fff;'>@_alvincandra</a>
+  </footer>
+
+  <script>
+    function generatePrompt() {
+      const karakter = document.getElementById("karakter").value;
+      const umur = document.getElementById("umur").value;
+      const pakaian = document.getElementById("pakaian").value;
+      const lokasi = document.getElementById("lokasi").value;
+      const suasana = document.getElementById("suasana").value;
+      const suara = document.getElementById("suara").value;
+      const bahasa = document.getElementById("bahasa").value;
+      const dialog = document.getElementById("dialog").value;
+
+      const prompt = `
+Seorang ${karakter} berusia ${umur} mengenakan ${pakaian}, berada di ${lokasi}, dalam suasana ${suasana}.
+Suara latar: ${suara}.
+Karakter berbicara dalam ${bahasa}, dengan dialog: "${dialog}"
+`.trim();
+
+      document.getElementById("outputPrompt").innerText = prompt;
+    }
+
+    function copyPrompt() {
+      const text = document.getElementById("outputPrompt").innerText;
+      navigator.clipboard.writeText(text);
+      alert("Prompt berhasil disalin!");
+    }
+  </script>
+
+</body>
+</html>
